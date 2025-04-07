@@ -1,0 +1,270 @@
+/* WordScramble.css */
+
+.word-scramble-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-panel {
+  width: 90%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  position: relative;
+  z-index: 10;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-panel.correct-answer {
+  animation: pulse 1s ease;
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.6);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 10px 15px;
+  min-width: 80px;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timer {
+  position: relative;
+  width: 40%;
+}
+
+.timer-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  background-color: #4CAF50;
+  transition: width 1s linear;
+  border-radius: 0 0 8px 8px;
+}
+
+.word-area {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.scrambled-word {
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 8px;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.clue-box {
+  background-color: #f8f9fa;
+  border-left: 4px solid #3498db;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  padding: 12px 15px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  flex: 1;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.submit-button {
+  background-color: #3498db;
+  color: white;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.hint-button {
+  background-color: #f39c12;
+  color: white;
+}
+
+.hint-button:hover:not(:disabled) {
+  background-color: #e67e22;
+}
+
+.message {
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  animation: fadeIn 0.5s;
+}
+
+.correct-message {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.timeout-message {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.answer-reveal {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 15px;
+  animation: fadeIn 0.5s;
+}
+
+/* Confetti Animation */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Bubble Float Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-panel {
+    width: 95%;
+    padding: 20px;
+  }
+  
+  .scrambled-word {
+    font-size: 28px;
+    letter-spacing: 5px;
+  }
+  
+  .stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .timer {
+    width: 100%;
+  }
+  
+  input {
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+}
+
+/* Background Animation */
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  z-index: 0;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
